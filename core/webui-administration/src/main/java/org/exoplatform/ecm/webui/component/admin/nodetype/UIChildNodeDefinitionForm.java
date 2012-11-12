@@ -258,16 +258,18 @@ public class UIChildNodeDefinitionForm extends UIFormInputSetWithAction {
         uiApp.addMessage(new ApplicationMessage("UIChildNodeDefinitionForm.msg.child-name", null));
         return;
       }
-      for(int i = 0; i < nodeName.length(); i ++){
-        char c = nodeName.charAt(i);
-        if(Character.isLetter(c) || Character.isDigit(c) || Character.isSpaceChar(c) || c=='_'
-          || c=='-' || c=='.' || c==':' || c=='@' || c=='^' || c=='[' || c==']' || c==',') {
-          continue ;
-        }
-        uiApp.addMessage(new ApplicationMessage(
+      if(!"*".equals(nodeName.trim())){
+        for(int i = 0; i < nodeName.length(); i ++){
+          char c = nodeName.charAt(i);
+          if(Character.isLetter(c) || Character.isDigit(c) || Character.isSpaceChar(c) || c=='_'
+            || c=='-' || c=='.' || c==':' || c=='@' || c=='^' || c=='[' || c==']' || c==',') {
+            continue ;
+          }
+          uiApp.addMessage(new ApplicationMessage(
             "UIChildNodeDefinitionForm.msg.child-invalid", null,
             ApplicationMessage.WARNING));
-        return;
+          return;
+        }
       }
       NodeDefinitionValue nodeDefValue =
         uiChildNodeForm.getChildNodeByName(nodeName, uiForm.addedChildDef_);
@@ -298,16 +300,18 @@ public class UIChildNodeDefinitionForm extends UIFormInputSetWithAction {
         uiApp.addMessage(new ApplicationMessage("UIChildNodeDefinitionForm.msg.child-name", null));
         return;
       }
-      for(int i = 0; i < childNodeName.length(); i ++){
-        char c = childNodeName.charAt(i);
-        if(Character.isLetter(c) || Character.isDigit(c) || Character.isSpaceChar(c) || c=='_'
-          || c=='-' || c=='.' || c==':' || c=='@' || c=='^' || c=='[' || c==']' || c==',') {
-          continue ;
-        }
-        uiApp.addMessage(new ApplicationMessage("UIChildNodeDefinitionForm.msg.child-invalid",
+      if(!"*".equals(childNodeName.trim())){
+        for(int i = 0; i < childNodeName.length(); i ++){
+          char c = childNodeName.charAt(i);
+          if(Character.isLetter(c) || Character.isDigit(c) || Character.isSpaceChar(c) || c=='_'
+            || c=='-' || c=='.' || c==':' || c=='@' || c=='^' || c=='[' || c==']' || c==',') {
+            continue ;
+          }
+          uiApp.addMessage(new ApplicationMessage("UIChildNodeDefinitionForm.msg.child-invalid",
                                                 null,
                                                 ApplicationMessage.WARNING));
-        return;
+          return;
+        }
       }
       if(prefix != null && prefix.length() > 0) {
         StringBuffer sb = new StringBuffer();
@@ -378,16 +382,18 @@ public class UIChildNodeDefinitionForm extends UIFormInputSetWithAction {
         uiApp.addMessage(new ApplicationMessage("UIChildNodeDefinitionForm.msg.child-name", null));
         return;
       }
-      for(int i = 0; i < childNodeName.length(); i ++){
-        char c = childNodeName.charAt(i);
-        if(Character.isLetter(c) || Character.isDigit(c) || Character.isSpaceChar(c) || c=='_'
-          || c=='-' || c=='.' || c==':' || c=='@' || c=='^' || c=='[' || c==']' || c==',') {
-          continue ;
+      if(!"*".equals(childNodeName.trim())){
+        for(int i = 0; i < childNodeName.length(); i ++){
+          char c = childNodeName.charAt(i);
+          if(Character.isLetter(c) || Character.isDigit(c) || Character.isSpaceChar(c) || c=='_'
+            || c=='-' || c=='.' || c==':' || c=='@' || c=='^' || c=='[' || c==']' || c==',') {
+            continue ;
+          }
+          uiApp.addMessage(new ApplicationMessage("UIChildNodeDefinitionForm.msg.child-invalid",
+                                                null,
+                                                ApplicationMessage.WARNING));
+          return;
         }
-        uiApp.addMessage(new ApplicationMessage(
-            "UIChildNodeDefinitionForm.msg.child-invalid", null,
-            ApplicationMessage.WARNING));
-        return;
       }
       if (prefix != null && prefix.length() > 0) {
         StringBuffer sb = new StringBuffer();
