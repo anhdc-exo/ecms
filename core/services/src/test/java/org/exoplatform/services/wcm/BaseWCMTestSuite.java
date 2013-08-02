@@ -72,7 +72,9 @@ import org.junit.runners.Suite.SuiteClasses;
   TestXJavaScriptService.class,
   TestWCMService.class,
   TestWebSchemaConfigService.class,
+  /**  To be activated later
   TestLiveLinkManagerService.class,
+   /** END**/
   TestWCMConfigurationService.class,
   TestFriendlyService.class,
   TestCreatePortalArtifactsService.class,
