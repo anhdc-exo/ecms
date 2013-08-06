@@ -322,11 +322,12 @@
 	      <object-param>
 	        <name>cache.config.ecm.query</name>
 	        <description>The clustered cache configuration</description>
-	        <object type="org.exoplatform.services.cache.impl.jboss.ea.EAExoCacheConfig">
+	        <object type="org.exoplatform.services.cache.impl.infinispan.generic.GenericExoCacheConfig">
 	          <field name="name"><string>default</string></field>
-	          <field name="expirationTimeout"><long>${wcm.cache.queryservice.expirationtimeout:600000}</long></field>
-	          <field name="maxNodes"><int>${wcm.cache.queryservice.maxnodes:5000}</int></field>
-	          <field name="distributed"><boolean>true</boolean></field>
+              <field name="strategy"><string>NONE</string></field>
+	          <field name="wakeUpInterval"><long>${wcm.cache.queryservice.expirationtimeout:600000}</long></field>
+             <field name="maxEntries"><int>${wcm.cache.queryservice.maxnodes:5000}</int></field>
+             <field name="lifespan"><long>-1</long></field>
 	        </object>
 	      </object-param>
       </init-params>
@@ -344,11 +345,12 @@
 	      <object-param>
 	        <name>cache.config.default</name>
 	        <description>The clustered cache configuration</description>
-	        <object type="org.exoplatform.services.cache.impl.jboss.ea.EAExoCacheConfig">
+	        <object type="org.exoplatform.services.cache.impl.infinispan.generic.GenericExoCacheConfig">
 	          <field name="name"><string>wcm.drive</string></field>
-	          <field name="expirationTimeout"><long>${wcm.cache.managedrive.expirationtimeout:600000}</long></field>
-	          <field name="maxNodes"><int>${wcm.cache.managedrive.maxnodes:5000}</int></field>
-	          <field name="distributed"><boolean>true</boolean></field>
+             <field name="strategy"><string>NONE</string></field>
+	          <field name="wakeUpInterval"><long>${wcm.cache.managedrive.expirationtimeout:600000}</long></field>
+	          <field name="maxEntries"><int>${wcm.cache.managedrive.maxnodes:5000}</int></field>
+             <field name="lifespan"><long>-1</long></field>
 	        </object>
 	      </object-param>
       </init-params>
