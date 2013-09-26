@@ -264,18 +264,22 @@ public class WCMComposerImpl implements WCMComposer, Startable {
     if (LOG.isDebugEnabled()) LOG.debug("##### "+path+":"+version+":"+remoteUser+":"+orderBy+":"+orderType);
 
     NodeIterator nodeIterator ;
-    if (totalSize==0) {
-      SessionProvider systemProvider = WCMCoreUtils.getSystemSessionProvider();
-      nodeIterator = getViewableContents(workspace, path, filters, systemProvider, false);
-      if (nodeIterator != null) {
-        totalSize = nodeIterator.getSize();
-      }
-    }
+
 
     if (WCMComposer.VISIBILITY_PUBLIC.equals(visibility) && MODE_LIVE.equals(mode)) {
       sessionProvider = remoteUser == null?
                         aclSessionProviderService.getAnonymSessionProvider() :
                         aclSessionProviderService.getACLSessionProvider(getAnyUserACL());
+    }
+    
+    if (totalSize==0) {
+        nodeIterator = getViewableContents(workspace, path, filters, sessionProvider, false);
+        if (nodeIterator != null) {
+          while (nodeIterator.hasNext()) {
+            nodeIterator.nextNode();
+            totalSize++;
+          }
+        }
     }
 
     nodeIterator = getViewableContents(workspace, path, filters, sessionProvider, true);
